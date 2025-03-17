@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jottie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- New Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="path/to/logo.png" alt="Logo" class="logo">
+                <span class="app-name">Jottie</span>
+            </div>
+            
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <!-- If no image, show initials -->
+                    <span>JO</span>
+                </div>
+                <div class="user-info">
+                    <span class="user-name">Jessica Omero</span>
+                    <span class="user-email">omero.jessica@gmail.com</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="#" class="active" data-section="calendar">
+                            <i class="fas fa-calendar"></i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-section="todo">
+                            <i class="fas fa-tasks"></i>
+                            <span>To-Do List</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" data-section="binder">
+                            <i class="fas fa-book"></i>
+                            <span>School Binder</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-bottom">
+                        <a href="#" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- <header>
+                <h1>Student Productivity Hub</h1>
+        </header> -->
+
+        <main>
+            <!-- Calendar Section -->
+            <section id="calendar" class="section active">
+                <h2>Calendar</h2>
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                        <h3 id="current-month">Month Year</h3>
+                        <button id="next-month"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                    <div class="weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+                    <div id="calendar-days" class="days">
+                        <div class="day">
+                            <span class="day-number">1</span>
+                            <div class="event-indicator-wrapper">
+                                <div class="event-indicator">Meeting with Professor</div>
+                                <div class="event-indicator">Assignment Due</div>
+                        </div>
+                        </div>
+                        </div>
+                </div>
+
+                <div class="events-list">
+                    <h3>Upcoming Events</h3>
+                    <ul id="events-container"></ul>
+                </div>
+            </section>
+
+            <!-- Day Events Modal -->
+            <div id="day-events-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 id="day-events-date">Events for Date</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div id="day-events-list" class="events-list">
+                            <!-- Events will be populated here -->
+                        </div>
+                        <div class="modal-actions">
+                            <button id="add-new-event-btn" class="btn primary">Add New Event</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- To-Do List Section -->
+            <section id="todo" class="section">
+                <h2>To-Do List</h2>
+                <div class="todo-container">
+                    <form id="add-todo-form">
+                        <div class="form-group">
+                            <input type="text" id="todo-input" placeholder="Add a new task..." required>
+                            <select id="todo-priority">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                            <button type="submit" class="btn">Add</button>
+                        </div>
+                    </form>
+
+                    <div class="todo-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="active">Active</button>
+                        <button class="filter-btn" data-filter="completed">Completed</button>
+                    </div>
+
+                    <ul id="todo-list"></ul>
+                </div>
+            </section>
+
+            <!-- School Binder Section -->
+            <section id="binder" class="section">
+                <h2>School Binder</h2>
+                <div class="binder-container">
+                    <div class="subjects-panel">
+                        <h3>Subjects</h3>
+                        <form id="add-subject-form">
+                            <div class="form-group">
+                                <input type="text" id="subject-input" placeholder="Add new subject..." required>
+                                <button type="submit" class="btn">Add</button>
+                            </div>
+                        </form>
+                        <ul id="subjects-list"></ul>
+                    </div>
+
+                    <div class="subject-content">
+                        <div id="no-subject-selected">
+                            <p>Select a subject to view its content</p>
+                        </div>
+                        <div id="subject-details" style="display: none;">
+                            <h3 id="current-subject-name">Subject Name</h3>
+                            
+                            <div class="tabs">
+                                <button class="tab-btn active" data-tab="notes">Notes</button>
+                                <button class="tab-btn" data-tab="documents">Documents</button>
+                                <button class="tab-btn" data-tab="grades">Grades</button>
+                            </div>
+                            
+                            <div id="notes-tab" class="tab-content active">
+                                <div class="notes-editor">
+                                    <textarea id="notes-content" placeholder="Write your notes here..."></textarea>
+                                    <button id="save-notes" class="btn">Save Notes</button>
+                                </div>
+                            </div>
+                            
+                            <div id="documents-tab" class="tab-content">
+                                <div class="document-uploader">
+                                    <h4>Upload Document</h4>
+                                    <form id="document-upload-form">
+                                        <div class="form-group">
+                                            <label for="document-name">Document Name:</label>
+                                            <input type="text" id="document-name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="document-file">File:</label>
+                                            <input type="file" id="document-file">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="document-url">Or Document URL:</label>
+                                            <input type="url" id="document-url" placeholder="https://example.com/document.pdf">
+                                        </div>
+                                        <button type="submit" class="btn">Upload</button>
+                                    </form>
+                                </div>
+                                <div class="documents-list">
+                                    <h4>Uploaded Documents</h4>
+                                    <ul id="documents-container"></ul>
+                                </div>
+                            </div>
+                            
+                            <div id="grades-tab" class="tab-content">
+                                <div class="grades-container">
+                                    <form id="add-grade-form">
+                                        <div class="form-group">
+                                            <label for="exam-name">Exam/Assignment Name:</label>
+                                            <input type="text" id="exam-name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exam-score">Score:</label>
+                                            <input type="number" id="exam-score" min="0" max="100" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exam-date">Date:</label>
+                                            <input type="date" id="exam-date">
+                                        </div>
+                                        <button type="submit" class="btn">Add Grade</button>
+                                    </form>
+                                    
+                                    <div class="grades-list">
+                                        <h4>Grade History</h4>
+                                        <table id="grades-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Exam/Assignment</th>
+                                                    <th>Score</th>
+                                                    <th>Date</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="grades-container"></tbody>
+                                        </table>
+                                        <div id="grade-summary">
+                                            <p>Average Score: <span id="average-score">N/A</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Student Productivity Hub</p>
+        </footer>
+        </div>
+    </div>
+
+    <!-- Edit Todo Modal -->
+    <div id="edit-todo-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Task</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-todo-form">
+                    <input type="hidden" id="edit-todo-id">
+                    <div class="form-group">
+                        <label for="edit-todo-text">Task</label>
+                        <input type="text" id="edit-todo-text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-todo-priority">Priority</label>
+                        <select id="edit-todo-priority">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Cancel</button>
+                <button type="submit" form="edit-todo-form" class="btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Details Modal -->
+    <div id="event-details-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="event-title-wrapper">
+                    <h3 id="modal-event-title">Event Title</h3>
+                </div>
+            <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="event-details">
+                    <div class="event-detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-calendar-day"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span id="modal-event-date"></span>
+                        </div>
+                    </div>
+                    <div class="event-detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="detail-content">
+                            <span id="modal-event-time"></span>
+                        </div>
+                    </div>
+                    <div class="event-detail-item">
+                        <div class="detail-icon">
+                            <i class="fas fa-align-left"></i>
+                        </div>
+                        <div class="detail-content">
+            <p id="modal-event-description"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="edit-event" class="btn btn-secondary">
+                    <i class="fas fa-edit"></i>
+                    Edit Event
+                </button>
+                <button id="delete-event" class="btn btn-danger">
+                    <i class="fas fa-trash"></i>
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Event Modal -->
+    <div id="edit-event-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Event</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-event-form">
+                    <input type="hidden" id="edit-event-id">
+                    <div class="form-group">
+                        <label for="edit-event-title">Event Title</label>
+                        <input type="text" id="edit-event-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-event-date">Date</label>
+                        <input type="date" id="edit-event-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-event-time">Time Due</label>
+                        <input type="time" id="edit-event-time">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-event-color">Event Color</label>
+                        <div class="color-picker">
+                            <button type="button" class="color-option" data-color="#0A84FF" style="background-color: #0A84FF;"></button>
+                            <button type="button" class="color-option" data-color="#FF453A" style="background-color: #FF453A;"></button>
+                            <button type="button" class="color-option" data-color="#32D74B" style="background-color: #32D74B;"></button>
+                            <button type="button" class="color-option" data-color="#FFD60A" style="background-color: #FFD60A;"></button>
+                            <button type="button" class="color-option" data-color="#BF5AF2" style="background-color: #BF5AF2;"></button>
+                            <button type="button" class="color-option" data-color="#FF9F0A" style="background-color: #FF9F0A;"></button>
+                            <input type="hidden" id="edit-event-color">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-event-description">Description</label>
+                        <textarea id="edit-event-description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Cancel</button>
+                <button type="submit" form="edit-event-form" class="btn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Move the event form to a new modal -->
+    <div id="add-event-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Event</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-event-form">
+                    <div class="form-group">
+                        <label for="event-title">Event Title</label>
+                        <input type="text" id="event-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date">Date</label>
+                        <input type="date" id="event-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-time">Time Due</label>
+                        <input type="time" id="event-time">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-color">Event Color</label>
+                        <div class="color-picker">
+                            <button type="button" class="color-option active" data-color="#0A84FF" style="background-color: #0A84FF;"></button>
+                            <button type="button" class="color-option" data-color="#FF453A" style="background-color: #FF453A;"></button>
+                            <button type="button" class="color-option" data-color="#32D74B" style="background-color: #32D74B;"></button>
+                            <button type="button" class="color-option" data-color="#FFD60A" style="background-color: #FFD60A;"></button>
+                            <button type="button" class="color-option" data-color="#BF5AF2" style="background-color: #BF5AF2;"></button>
+                            <button type="button" class="color-option" data-color="#FF9F0A" style="background-color: #FF9F0A;"></button>
+                            <input type="hidden" id="event-color" value="#0A84FF">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description">Description</label>
+                        <textarea id="event-description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary close-modal">Cancel</button>
+                <button type="submit" form="add-event-form" class="btn">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

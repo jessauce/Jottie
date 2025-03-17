@@ -1,0 +1,1515 @@
+/* First, import the fonts (assuming you have the font files) */
+@font-face {
+    font-family: 'Tiempos Text';
+    src: url('path/to/TiemposText-Regular.woff2') format('woff2'),
+         url('path/to/TiemposText-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tiempos Text';
+    src: url('path/to/TiemposText-Medium.woff2') format('woff2'),
+         url('path/to/TiemposText-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tiempos Text';
+    src: url('path/to/TiemposText-Bold.woff2') format('woff2'),
+         url('path/to/TiemposText-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tiempos Fine';
+    src: url('path/to/TiemposFine-Regular.woff2') format('woff2'),
+         url('path/to/TiemposFine-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Tiempos Fine';
+    src: url('path/to/TiemposFine-Medium.woff2') format('woff2'),
+         url('path/to/TiemposFine-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+:root {
+    --primary-color: #b39983; /* warm beige */
+    --secondary-color: #665A48; /* darker beige */
+    --accent-color: #C8B6A6; /* light beige */
+    --light-color: #F8F4EA; /* off-white */
+    --dark-color: #1A1D21; /* dark gray/almost black */
+    --success-color: #A4907C; /* muted beige */
+    --warning-color: #C8B6A6; /* light beige */
+    --danger-color: #8B7355; /* dark beige */
+    --gray-color: #8E9296;
+    --border-color: #E9EAEB;
+    --bg-color: #ffffff;
+    --hover-color: #fffdf6; /* light beige hover state */
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --font-primary: 'Tiempos Text', Georgia, serif;
+    --font-secondary: 'Tiempos Fine', Georgia, serif;
+    --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --text-dark: #2D3436; /* very dark gray for primary text */
+    --text-medium: #4A4E51; /* medium gray for secondary text */
+    --text-light: #6B7074; /* lighter gray for tertiary text */
+}
+
+body {
+    background-color: #fafafa;
+    color: var(--text-dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-primary);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--card-shadow);
+}
+
+header h1 {
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--hover-color);
+}
+
+nav ul li a.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Main Content Styles */
+.main-content {
+    margin-left: 64px;
+    padding: 24px;
+    transition: margin-left 0.3s ease;
+    width: calc(100% - 64px);
+}
+
+.sidebar:hover ~ .main-content {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+}
+
+.section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+section h2 {
+    color: var(--text-dark);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+    transition: border-color 0.2s ease;
+    background-color: var(--bg-color);
+    font-family: var(--font-primary);
+    color: var(--text-dark);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(200, 182, 166, 0.1);
+}
+
+.btn {
+    background-color: var(--accent-color);
+    color: var(--dark-color);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-family: var(--font-secondary);
+    letter-spacing: 0.02em;
+}
+
+.btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+}
+
+.btn-danger:hover {
+    background-color: #d32f2f;
+}
+
+/* Calendar Styles */
+.calendar-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 30px;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 0 8px;
+}
+
+.calendar-header h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-family: var(--font-primary);
+    font-weight: bold;
+    letter-spacing: -0.02em;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: all 0.2s ease;
+}
+
+.calendar-header button:hover {
+    background-color: var(--hover-color);
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin-bottom: 8px;
+    padding: 0 8px;
+}
+
+.weekdays div {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-medium);
+    text-transform: uppercase;
+    padding: 8px 0;
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    letter-spacing: 0.05em;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: var(--border-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.day {
+    height: 120px;
+    border: none;
+    padding: 8px;
+    position: relative;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background-color: var(--bg-color);
+}
+
+.day:hover {
+    background-color: var(--hover-color);
+}
+
+.day.today {
+    background-color: var(--light-color);
+    border-color: var(--primary-color);
+}
+
+.day.today .day-number {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.day.other-month {
+    background-color: #FAFAFA;
+}
+
+.day-number {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    font-family: var(--font-primary);
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.day:hover .day-number {
+    background-color: var(--hover-color);
+}
+
+.event-list {
+    margin-top: 32px;
+    max-height: none;
+}
+
+.event-item {
+    padding: 4px 8px;
+    margin-bottom: 4px;
+    background-color: #E8F5FE;
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--accent-color);
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-left: 3px solid var(--accent-color);
+}
+
+.event-item:hover {
+    background-color: #D2EAFD;
+}
+
+/* Upcoming Events List Section */
+.events-list {
+    margin-top: 32px;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+}
+
+.events-list h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+.events-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.events-list li {
+    padding: 16px;
+    margin-bottom: 12px;
+    background-color: #F8F9FA;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.events-list li:hover {
+    background-color: #F1F3F4;
+    transform: translateY(-1px);
+}
+
+.events-list li .event-title {
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    font-weight: normal;
+    font-family: var(--font-secondary);
+    font-weight: bold;
+}
+
+.events-list li div:last-child {
+    color: var(--text-dark);  
+    font-size: 0.9em;
+}
+
+/* Add these new styles for event indicators */
+.event-indicator-wrapper {
+    position: absolute;
+    top: 40px;
+    left: 8px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.event-indicator {
+    width: 100%;
+    padding: 2px 4px;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-left: 2px solid var(--accent-color);
+    font-family: var(--font-secondary);
+}
+
+/* Update modal styles for calendar events */
+#add-event-modal .modal-content,
+#event-details-modal .modal-content {
+    padding: 0;
+    overflow: hidden;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    overflow-y: auto;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.close:hover {
+    color: var(--text-dark);
+}
+
+.modal-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 20px;
+    color: var(--text-light);
+}
+
+/* Add these new styles */
+
+/* Wrapper */
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background-color: var(--bg-color);
+    border-right: 1px solid var(--border-color);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar:not(:hover) {
+    width: 64px; /* Make it smaller when not hovered */
+}
+
+/* Sidebar Header */
+.sidebar-header {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.app-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-dark);
+    white-space: nowrap;
+}
+
+/* User Section */
+.sidebar-user {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.user-info {
+    overflow: hidden;
+}
+
+.user-name {
+    display: block;
+    font-weight: 600;
+    color: var(--text-dark);
+    white-space: nowrap;
+    font-family: var(--font-primary);
+    font-weight: 500;
+}
+
+.user-email {
+    display: block;
+    font-size: 12px;
+    color: var(--text-medium);
+    white-space: nowrap;
+    font-family: var(--font-secondary);
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+    flex-grow: 1;
+    padding: 20px 0;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.sidebar-nav li {
+    margin: 4px 0;
+}
+
+.sidebar-nav li.sidebar-bottom {
+    margin-top: auto;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    color: var(--text-dark);
+    text-decoration: none;
+    gap: 16px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.sidebar-nav a:hover {
+    background-color: var(--hover-color);
+}
+
+.sidebar-nav a.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.sidebar-nav i {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.sidebar-nav span {
+    font-size: 15px;
+}
+
+/* Primary Headings */
+h1, h2, h3 {
+    font-family: var(--font-primary);
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+}
+
+/* Secondary Headings */
+h4, h5, h6 {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    letter-spacing: -0.01em;
+}
+
+/* Update specific components */
+.sidebar-header .app-name {
+    font-family: 'Tiempos Fine', Georgia, serif;
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text-dark);
+}
+
+.user-name {
+    font-family: var(--font-primary);
+    font-weight: 500;
+}
+
+.user-email {
+    font-family: var(--font-secondary);
+}
+
+.sidebar-nav a {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+}
+
+/* Calendar styles */
+.calendar-header h3 {
+    font-family: 'Tiempos Fine', Georgia, serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+}
+
+.weekdays div {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-medium);
+}
+
+.day-number {
+    font-family: var(--font-primary);
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.event-indicator {
+    font-family: var(--font-secondary);
+    font-size: 11px;
+    color: var(--text-dark);
+}
+
+/* Modal styles */
+.modal-content {
+    background-color: var(--bg-color);
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    width: 560px;
+    max-width: 90%;
+    position: relative;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    max-height: 85vh;
+}
+
+.modal-header {
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.modal-body {
+    padding: 32px;
+    overflow-y: auto;
+    flex-grow: 1;
+    min-height: 100px;
+    color: var(--text-medium);
+}
+
+.modal-footer {
+    padding: 24px 32px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+    background-color: var(--bg-color);
+}
+
+/* Form Styles in Modal */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group:last-child {
+    margin-bottom: 32px;
+}
+
+/* Button Styles */
+.modal-footer .btn {
+    min-width: 120px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Ensure modal is centered on smaller screens */
+@media (max-height: 700px) {
+    .modal-content {
+        margin: 20px auto;
+        max-height: calc(100vh - 40px);
+    }
+}
+
+/* Add smooth scrollbar for webkit browsers */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Modal styles */
+.modal-header h3 {
+    font-family: 'Tiempos Fine', Georgia, serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+}
+
+/* Form styles */
+label {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    color: var(--text-dark);
+}
+
+input, select, textarea {
+    font-family: var(--font-primary);
+    color: var(--text-dark);
+}
+
+.btn {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+}
+
+/* Todo list styles */
+.todo-text {
+    font-family: var(--font-primary);
+    font-weight: normal;
+    color: var(--text-dark);
+}
+
+.todo-priority {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+}
+
+.todo-meta {
+    font-family: var(--font-secondary);
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+/* Binder styles */
+.subject-item {
+    font-family: var(--font-primary);
+    font-weight: 500;
+}
+
+.tab-btn {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+}
+
+/* Table styles */
+table th {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    letter-spacing: 0.02em;
+    color: var(--text-medium);
+}
+
+table td {
+    font-family: var(--font-primary);
+    color: var(--text-dark);
+}
+
+/* Additional typography refinements */
+.section-title {
+    font-family: 'Tiempos Fine', Georgia, serif;
+    font-weight: 500;
+    font-size: 42px;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    color: var(--text-dark);
+}
+
+.subsection-title {
+    font-family: var(--font-secondary);
+    font-weight: normal;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+}
+
+/* Helper classes */
+.text-primary {
+    font-family: var(--font-primary);
+}
+
+.text-secondary {
+    font-family: var(--font-secondary);
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.text-medium {
+    font-weight: 500;
+}
+
+/* Add responsive adjustments for smaller screens */
+@media (max-width: 1200px) {
+    .section-title, h1 {
+        font-size: 38px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    h3 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .section-title, h1 {
+        font-size: 32px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+    
+    .sidebar-header .app-name {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title, h1 {
+        font-size: 28px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    h3 {
+        font-size: 18px;
+    }
+    
+    .sidebar-header .app-name {
+        font-size: 24px;
+    }
+}
+
+/* Color picker styles */
+.color-picker {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.color-option {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option.active {
+    border-color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* Update event indicator styles */
+.event-indicator {
+    width: 100%;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Tiempos Fine', Georgia, serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+    border-left-width: 3px;
+    border-left-style: solid;
+}
+
+/* Toast Notification Styles */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    padding: 16px 24px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 2000;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast.success {
+    border-left: 4px solid var(--success-color);
+}
+
+.toast.success i {
+    color: var(--success-color);
+    font-size: 20px;
+}
+
+.toast span {
+    font-family: var(--font-primary);
+    color: var(--text-dark);
+    font-size: 15px;
+}
+
+/* Update Edit Modal Button Styles */
+#edit-event-form .btn[type="submit"] {
+    background-color: var(--success-color);
+    position: relative;
+    overflow: hidden;
+}
+
+#edit-event-form .btn[type="submit"]:hover {
+    background-color: #27b677;
+}
+
+/* Loading State for Save Button */
+.btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Event Details Modal Specific Styles */
+#event-details-modal .modal-content {
+    max-width: 560px;
+}
+
+#event-details-modal .modal-header {
+    padding: 32px 32px 24px;
+    border-bottom: none;
+}
+
+#event-details-modal .event-title-wrapper {
+    width: 100%;
+}
+
+#event-details-modal .modal-header h3 {
+    font-family: 'Tiempos Fine', Georgia, serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text-dark);
+    margin: 0;
+    line-height: 1.3;
+}
+
+#event-details-modal .modal-body {
+    padding: 0 32px 32px;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.event-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.detail-icon {
+    width: 32px;
+    height: 32px;
+    background-color: var(--hover-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.detail-icon i {
+    font-size: 16px;
+    color: var(--text-medium);
+}
+
+.detail-content {
+    flex-grow: 1;
+    padding-top: 6px;
+}
+
+.detail-content span,
+.detail-content p {
+    font-family: var(--font-primary);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text-medium);
+    margin: 0;
+}
+
+#event-details-modal .modal-footer {
+    padding: 24px 32px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+#event-details-modal .btn {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#event-details-modal .btn i {
+    font-size: 16px;
+}
+
+#event-details-modal .btn-secondary {
+    background-color: var(--light-color);
+    color: var(--text-dark);
+}
+
+#event-details-modal .btn-secondary:hover {
+    background-color: var(--accent-color);
+}
+
+#event-details-modal .btn-danger {
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+#event-details-modal .btn-danger:hover {
+    background-color: #FEE2E2;
+    color: #DC2626;
+}
+
+/* Add color accent to the modal */
+#event-details-modal .modal-content {
+    position: relative;
+}
+
+#event-details-modal .modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 8px 8px 0 0;
+    /* The background-color will be set dynamically in JS */
+}
+
+/* To-Do List Styles */
+.todo-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+}
+
+#add-todo-form .form-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+#todo-input {
+    flex-grow: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+}
+
+#todo-priority {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+    min-width: 120px;
+    background-color: white;
+}
+
+.todo-filters {
+    margin: 20px 0;
+    display: flex;
+    gap: 12px;
+}
+
+.filter-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: var(--hover-color);
+    color: var(--text-medium);
+}
+
+.filter-btn:hover {
+    background-color: #e5e7eb;
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#todo-list {
+    list-style: none;
+    padding: 0;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 12px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    transition: all 0.2s ease;
+}
+
+.todo-item:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--card-shadow);
+}
+
+.todo-item.completed {
+    opacity: 0.7;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+.todo-checkbox {
+    width: 20px;
+    height: 20px;
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+.todo-content {
+    flex-grow: 1;
+}
+
+.todo-text {
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: var(--text-dark);
+    font-family: var(--font-primary);
+}
+
+.todo-meta {
+    display: flex;
+    align-items: center;
+}
+
+.todo-priority {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.priority-low {
+    background-color: var(--light-color);
+    color: var(--text-medium);
+}
+
+.priority-medium {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+}
+
+.priority-high {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 8px;
+    margin-left: 16px;
+}
+
+.todo-actions button {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: var(--text-dark);
+    transition: all 0.2s ease;
+    border-radius: 4px;
+}
+
+.todo-actions button:hover {
+    background-color: var(--hover-color);
+}
+
+.todo-actions .edit-btn:hover {
+    color: var(--accent-color);
+}
+
+.todo-actions .delete-btn:hover {
+    color: var(--danger-color);
+}
+
+/* Edit Todo Modal Styles */
+#edit-todo-modal .modal-content {
+    max-width: 460px;
+}
+
+#edit-todo-modal .form-group {
+    margin-bottom: 20px;
+}
+
+#edit-todo-modal label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+#edit-todo-modal input,
+#edit-todo-modal select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+#edit-todo-modal input:focus,
+#edit-todo-modal select:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(200, 182, 166, 0.1);
+}
+
+/* Binder container restoration */
+.binder-container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Calendar event colors */
+.color-picker .color-option[data-color="#0A84FF"] {
+    background-color: #C8B6A6; /* light beige */
+}
+
+.color-picker .color-option[data-color="#FF453A"] {
+    background-color: #9F8772; /* warm beige */
+}
+
+.color-picker .color-option[data-color="#32D74B"] {
+    background-color: #665A48; /* darker beige */
+}
+
+.color-picker .color-option[data-color="#FFD60A"] {
+    background-color: #A4907C; /* muted beige */
+}
+
+.color-picker .color-option[data-color="#BF5AF2"] {
+    background-color: #8B7355; /* dark beige */
+}
+
+.color-picker .color-option[data-color="#FF9F0A"] {
+    background-color: #F8F4EA; /* off-white */
+}
+
+/* Success toast */
+.toast.success {
+    border-left: 4px solid var(--success-color);
+}
+
+.toast.success i {
+    color: var(--success-color);
+}
+
+/* Day Events Modal Styles */
+#day-events-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+#day-events-list .event-item {
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: var(--bg-color);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#day-events-list .event-item:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-1px);
+}
+
+#day-events-list .event-item .event-title {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+#day-events-list .event-item .event-time {
+    font-size: 0.9em;
+    color: var(--text-medium);
+}
+
+#day-events-list .event-item .event-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+#day-events-list .event-item .event-actions button {
+    padding: 4px 8px;
+    font-size: 0.9em;
+    border-radius: 4px;
+}
+
+.modal-actions {
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    text-align: right;
+}
+
+/* Success Message Styles */
+#success-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #32D74B;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+#success-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
