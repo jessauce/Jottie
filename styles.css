@@ -408,12 +408,12 @@ input:focus, select:focus, textarea:focus {
     margin-bottom: 4px;
     font-weight: normal;
     font-family: var(--font-secondary);
-    font-weight: bold;
+    
 }
 
 .events-list li div:last-child {
-    color: var(--text-dark);  
-    font-size: 0.9em;
+    color: var(--text-medium);  
+    font-size: 0.8em;
 }
 
 /* Add these new styles for event indicators */
@@ -506,7 +506,7 @@ footer {
 
 /* Sidebar Styles */
 .sidebar {
-    width: 280px;
+    width: 235px;
     background-color: var(--bg-color);
     border-right: 1px solid var(--border-color);
     height: 100vh;
@@ -522,7 +522,7 @@ footer {
 }
 
 .sidebar:not(:hover) {
-    width: 64px; /* Make it smaller when not hovered */
+    width: 65px; /* Make it smaller when not hovered */
 }
 
 /* Sidebar Header */
@@ -532,6 +532,7 @@ footer {
     align-items: center;
     gap: 16px;
     border-bottom: 1px solid var(--border-color);
+    padding-left: 17px;
 }
 
 .logo {
@@ -555,11 +556,12 @@ footer {
     align-items: center;
     gap: 12px;
     border-bottom: 1px solid var(--border-color);
+    padding-left: 16px;
 }
 
 .user-avatar {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background-color: var(--accent-color);
     display: flex;
@@ -594,7 +596,7 @@ footer {
 /* Sidebar Navigation */
 .sidebar-nav {
     flex-grow: 1;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .sidebar-nav ul {
@@ -617,10 +619,10 @@ footer {
 .sidebar-nav a {
     display: flex;
     align-items: center;
-    padding: 12px 24px;
+    padding: 12px 22px;
     color: var(--text-dark);
     text-decoration: none;
-    gap: 16px;
+    gap: 18px;
     transition: all 0.2s ease;
     white-space: nowrap;
 }
@@ -995,7 +997,7 @@ table td {
     width: 100%;
     padding: 4px 8px;
     border-radius: 4px;
-    font-family: 'Tiempos Fine', Georgia, serif;
+    font-family: var(--font-secondary);
     font-size: 11px;
     font-weight: 500;
     color: var(--text-dark);
@@ -1330,16 +1332,19 @@ table td {
 .priority-low {
     background-color: var(--light-color);
     color: var(--text-medium);
+    font-family: var(--font-ui);
 }
 
 .priority-medium {
     background-color: var(--accent-color);
     color: var(--text-dark);
+    font-family: var(--font-ui);
 }
 
 .priority-high {
     background-color: var(--primary-color);
     color: white;
+    font-family: var(--font-ui);
 }
 
 .todo-actions {
