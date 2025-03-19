@@ -40,6 +40,8 @@ export function initCalendar() {
     
     // Setup cancel buttons in modals
     setupCancelButtons();
+
+    
     
     renderCalendar();
     renderEvents();
@@ -221,6 +223,9 @@ function handleAddEvent(e) {
     
     state.events.push(newEvent);
     saveEvents();
+
+    // Show success message
+    showSuccessMessage('Event added successfully!');
     
     // Reset form and close modal
     e.target.reset();
@@ -334,8 +339,7 @@ function handleEditEvent(e) {
         // Save changes to storage
         saveEvents();
         
-        // Show success message
-        showSuccessMessage('Event edited successfully!');
+
         
         // Update UI
         renderCalendar();
@@ -374,9 +378,13 @@ function showSuccessMessage(message) {
 function deleteEvent(eventId) {
     state.events = state.events.filter(event => event.id !== eventId);
     saveEvents();
+
     hideModal('event-details-modal');
     renderCalendar();
     renderEvents();
+
+    // Show success message
+    showSuccessMessage('Event deleted successfully!');
 }
 
 function renderEvents() {
