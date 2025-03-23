@@ -123,6 +123,11 @@
             <section id="todo" class="section">
                 <h2>To-Do List</h2>
                 <div class="todo-container">
+                    
+                    <div class="todo-search">
+                        <input type="text" id="todo-search" placeholder="Search tasks...">
+                    </div>
+
                     <form id="add-todo-form">
                         <div class="form-group">
                             <input type="text" id="todo-input" placeholder="Add a new task..." required>
@@ -134,6 +139,8 @@
                             <button type="submit" class="btn">Add</button>
                         </div>
                     </form>
+
+                
 
                     <div class="todo-filters">
                         <button class="filter-btn active" data-filter="all">All</button>
@@ -147,7 +154,7 @@
 
             <!-- School Binder Section -->
             <section id="binder" class="section">
-                <h2>School Binder [Not yet implemented yopak]</h2>
+                <h2>School Binder</h2>
                 <div class="binder-container">
                     <div class="subjects-panel">
                         <h3>Subjects</h3>
@@ -169,8 +176,8 @@
                             
                             <div class="tabs">
                                 <button class="tab-btn active" data-tab="notes">Notes</button>
-                                <button class="tab-btn" data-tab="documents">Documents</button>
-                                <button class="tab-btn" data-tab="grades">Grades</button>
+                                <!-- <button class="tab-btn" data-tab="documents">Documents</button> -->
+                                <!-- <button class="tab-btn" data-tab="grades">Grades</button> -->
                             </div>
                             
                             <div id="notes-tab" class="tab-content active">

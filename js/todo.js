@@ -5,6 +5,7 @@ export function initTodo() {
     const addTodoForm = document.getElementById('add-todo-form');
     const filterButtons = document.querySelectorAll('.filter-btn');
     const editTodoForm = document.getElementById('edit-todo-form');
+    const searchInput = document.getElementById('todo-search');
     
     addTodoForm.addEventListener('submit', handleAddTodo);
     editTodoForm.addEventListener('submit', handleUpdateTodo);
@@ -12,8 +13,15 @@ export function initTodo() {
     filterButtons.forEach(button => {
         button.addEventListener('click', handleFilterClick);
     });
+
+    searchInput.addEventListener('input', handleSearch);
     
     setupModalCloseHandlers('edit-todo-modal');
+    renderTodos();
+}
+
+function handleSearch(e) {
+    state.searchQuery = e.target.value.toLowerCase();
     renderTodos();
 }
 
@@ -49,9 +57,17 @@ function renderTodos() {
     const todoList = document.getElementById('todo-list');
     todoList.innerHTML = '';
     
-    // Filter todos based on current filter
+    // Filter todos based on current filter and search query
     let filteredTodos = [...state.todos];
     
+    // Apply search filter
+    if (state.searchQuery) {
+        filteredTodos = filteredTodos.filter(todo => 
+            todo.text.toLowerCase().includes(state.searchQuery)
+        );
+    }
+    
+    // Apply status filter
     if (state.currentFilter === 'active') {
         filteredTodos = filteredTodos.filter(todo => !todo.completed);
     } else if (state.currentFilter === 'completed') {
