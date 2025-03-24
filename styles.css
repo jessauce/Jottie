@@ -570,7 +570,24 @@ footer {
     color: white;
     font-weight: 600;
     flex-shrink: 0;
+    overflow: hidden; /* Add this to contain the image */
+    position: relative; /* Add this for proper positioning */
 }
+
+/* Add these styles for the profile image */
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This makes the image cover the container properly */
+    position: absolute; 
+    top: 0;
+    left: 0;
+}
+
+/* Make sure the initials show up only when needed */
+.user-avatar #sidebar-initials {
+    z-index: 1; /* Ensure initials are visible when no image is present */
+} */
 
 .user-info {
     overflow: hidden;
@@ -1927,3 +1944,280 @@ table td {
 #note-content input[type="checkbox"] {
     margin-right: 5px;
 }
+
+/* Profile Section Styles */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--card-shadow);
+}
+
+@media (min-width: 768px) {
+    .profile-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.profile-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.profile-image {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    cursor: pointer;
+}
+
+.profile-image-overlay i {
+    color: white;
+    font-size: 2rem;
+}
+
+.profile-image:hover .profile-image-overlay {
+    opacity: 1;
+}
+
+#change-profile-image {
+    background-color: var(--accent-color);
+    color: var(--text-dark);
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#change-profile-image:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#profile-form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+#profile-form .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#profile-form label {
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    color: var(--text-medium);
+    font-size: 14px;
+}
+
+#profile-form input,
+#profile-form textarea {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    color: var(--text-dark);
+    background-color: var(--bg-color);
+    transition: border-color 0.2s ease;
+}
+
+#profile-form input:focus,
+#profile-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+#profile-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Theme options */
+.theme-options {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.theme-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-option label {
+    font-family: var(--font-secondary);
+    cursor: pointer;
+}
+
+.theme-option input[type="radio"] {
+    accent-color: var(--primary-color);
+}
+
+#profile-form button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    align-self: flex-start;
+}
+
+#profile-form button[type="submit"]:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Notification styles */
+.notification-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.notification {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    transform: translateX(0);
+    opacity: 1;
+    transition: opacity 0.3s, transform 0.3s;
+    font-family: var(--font-secondary);
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.notification.fade-out {
+    opacity: 0;
+    transform: translateX(30px);
+}
+
+/* Dark theme support */
+body[data-theme="dark"] {
+    --bg-color: #1A1D21;
+    --text-color: #ffffff;
+    --card-bg: #282C30;
+    --border-color: #333;
+    --hover-color: #2A2E33;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+body[data-theme="dark"] .sidebar {
+    background-color: var(--card-bg);
+    border-right: 1px solid #333;
+}
+
+body[data-theme="dark"] .section,
+body[data-theme="dark"] .modal-content,
+body[data-theme="dark"] .profile-container {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] input,
+body[data-theme="dark"] select,
+body[data-theme="dark"] textarea {
+    background-color: #1F2327;
+    color: var(--text-color);
+    border-color: #444;
+}
+
+body[data-theme="dark"] input::placeholder,
+body[data-theme="dark"] textarea::placeholder {
+    color: #9CA3AF;
+}
+
+body[data-theme="dark"] .sidebar-header,
+body[data-theme="dark"] .sidebar-user {
+    border-bottom: 1px solid #333;
+}
+
+body[data-theme="dark"] .logo {
+    filter: brightness(0.9);
+}
+
+body[data-theme="dark"] h2,
+body[data-theme="dark"] h3,
+body[data-theme="dark"] h4 {
+    color: #E1E5EB;
+}
+
+body[data-theme="dark"] .user-name {
+    color: #E1E5EB;
+}
+
+body[data-theme="dark"] .user-email {
+    color: #9CA3AF;
+}
+
+/* Section header styling */
+/* .section h2 {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+    font-size: 1.75rem;
+} */
+
+/* Make the profile section match other sections */
+/* .section#profile {
+    padding: 1.5rem;
+} */
