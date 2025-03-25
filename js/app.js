@@ -2,6 +2,7 @@ import { initCalendar } from './calendar.js';
 import { initTodo } from './todo.js';
 import { initBinder } from './binder.js';
 import { initProfile } from './profile.js';
+import { initDashboard } from './dashboard.js';
 
 // Initialize the application
 function init() {
@@ -10,6 +11,7 @@ function init() {
     initTodo();
     initBinder();
     initProfile();
+    initDashboard();
 }
 
 function setupNavigation() {
@@ -61,3 +63,4 @@ function setupNavigation() {
 
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
+

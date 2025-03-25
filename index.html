@@ -19,24 +19,26 @@
             </div>
             
             <div class="sidebar-user">
-                <a href="#" data-section="profile">
+                <a href="#" data-section="profile" class="sidebar-user-link">
                     <div class="user-avatar">
-                        <!-- If no image, show initials -->
                         <img id="sidebar-profile-image" style="display: none;" alt="Profile">
                         <span id="sidebar-initials">JJ</span>
                     </div>
-                </a>
-                    <!-- This container holds the username and ensures it stays on the right -->
                     <div class="user-info">
                         <span class="user-name" id="sidebar-username">Username</span>
                     </div>
-                
+                </a>
             </div>
-            
-
 
             <nav class="sidebar-nav">
                 <ul>
+                    <li>
+                        <a href="#" data-section="dashboard">
+                            <i class="fas fa-th-large"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    
                     <li>
                         <a href="#" class="active" data-section="calendar">
                             <i class="fas fa-calendar"></i>
@@ -94,8 +96,7 @@
                         <div class="day">
                             <span class="day-number">1</span>
                             <div class="event-indicator-wrapper">
-                                <div class="event-indicator">Meeting with Professor</div>
-                                <div class="event-indicator">Assignment Due</div>
+                                <div class="event-indicator">This page is still loading</div>                           
                         </div>
                         </div>
                         </div>
@@ -314,8 +315,110 @@
                     </form>
                 </div>
             </section>
-        </main>
-
+            <section id="dashboard" class="section">
+                <h2>Dashboard</h2>
+                <div id="dashboard-container">
+                    <!-- Calendar Widget -->
+                    <div class="widget" id="calendar-widget">
+                        <h2>📅 Upcoming Events</h2>
+                        <p id="calendar-list">Loading...</p>
+                    </div>
+            
+                    <!-- To-Do List Widget -->
+                    <div class="widget" id="todo-widget">
+                        <h2>✅ To-Do List</h2>
+                        <p id="total-tasks">Active Tasks: 0</p>
+                        <p id="high-priority-list">Loading...</p>
+                    </div>
+            
+                    <!-- School Binder Widget -->
+                    <div class="widget" id="binder-widget">
+                        <h2>📝 School Binder</h2>
+                        <p id="binder-summary">Loading...</p>
+                    </div>
+            
+                    <!-- Productivity Stats Widget -->
+                    <div class="widget" id="stats-widget">
+                        <h2>📊 Productivity Stats</h2>
+                        <div class="stats">
+                            <p>Completed Tasks: <span id="completed-tasks">0</span></p>
+                        </div>
+                    </div>
+                </div>
+            
+                <style>
+                    #calendar-list li, #high-priority-list li, #todo-list li {
+                        font-family: var(--font-primary) !important;
+                    }
+                </style>
+            </section>
+            
+            </main>
+            
+            <script>
+                document.addEventListener('DOMContentLoaded', () => {
+            
+                    // Function to update the dashboard
+                    function updateDashboard() {
+                        // Load Calendar Data (Upcoming Events)
+                        const calendarData = JSON.parse(localStorage.getItem('events')) || [];
+                        const calendarList = document.getElementById('calendar-list');
+                        const today = new Date();
+            
+                        const upcomingEvents = calendarData.filter(event => {
+                            const eventDate = new Date(event.date);
+                            return eventDate >= today;
+                        }).sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+                        calendarList.innerHTML = upcomingEvents.length
+                            ? upcomingEvents.map(event => `<li>${event.title} - ${event.date}</li>`).join('')
+                            : 'No upcoming events.';
+            
+                        // Load To-Do List Data (Active Tasks)
+                        const todoData = JSON.parse(localStorage.getItem('todos')) || [];
+                        const activeTasks = todoData.filter(task => !task.completed);
+            
+                        // Display only the number of active tasks
+                        document.getElementById('total-tasks').textContent = `Active Tasks: ${activeTasks.length}`;
+            
+                        // Display High Priority Tasks
+                        const highPriorityList = document.getElementById('high-priority-list');
+                        const highPriorityTasks = activeTasks.filter(task => task.priority === 'high');
+            
+                        highPriorityList.innerHTML = highPriorityTasks.length
+                            ? highPriorityTasks.map(task => `<li>🔥 ${task.text}</li>`).join('')
+                            : 'No high-priority tasks.';
+            
+                        // Load School Binder Data (Subjects)
+                        const binderData = JSON.parse(localStorage.getItem('subjects')) || [];
+                        document.getElementById('binder-summary').textContent = `Total Subjects: ${binderData.length}`;
+            
+                        // Load Productivity Stats
+                        const completedTasks = todoData.filter(task => task.completed).length;
+                        document.getElementById('completed-tasks').textContent = completedTasks;
+                    }
+            
+                    // Initial Dashboard Sync
+                    updateDashboard();
+            
+                    // Sync dashboard when navigating to it
+                    window.addEventListener('hashchange', () => {
+                        if (window.location.hash === '#dashboard') {
+                            updateDashboard();
+                        }
+                    });
+            
+                    // Automatically sync by monitoring localStorage changes
+                    const originalSetItem = localStorage.setItem;
+                    localStorage.setItem = function (key, value) {
+                        originalSetItem.apply(this, arguments);
+                        updateDashboard();
+                    };
+                });
+            </script>
+            
+            
+  
         <footer>
             <p>&copy; 2025 Jottie
         </footer>
