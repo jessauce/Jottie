@@ -3,6 +3,7 @@ import { initTodo } from './todo.js';
 import { initBinder } from './binder.js';
 import { initProfile } from './profile.js';
 import { initDashboard } from './dashboard.js';
+import { initAboutUs } from './aboutus.js';
 
 // Initialize the application
 function init() {
@@ -12,6 +13,7 @@ function init() {
     initBinder();
     initProfile();
     initDashboard();
+    initAboutUs();
 }
 
 function setupNavigation() {

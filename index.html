@@ -57,11 +57,16 @@
                             <span>School Binder</span>
                         </a>
                     </li>
+                    
                     <li class="sidebar-bottom">
-                        <a href="#" data-section="settings">
+                        <a href="#" data-section="aboutus">
+                            <i class="fas fa-info-circle"></i>
+                            <span>About</span>
+                        </a>
+                        <!-- <a href="#" data-section="settings">
                             <i class="fas fa-cog"></i>
                             <span>Settings</span>
-                        </a>
+                        </a> -->
                     </li>
                 </ul>
             </nav>
@@ -165,8 +170,6 @@
                             <button type="submit" class="btn">Add</button>
                         </div>
                     </form>
-
-                
 
                     <div class="todo-filters">
                         <button class="filter-btn active" data-filter="all">All</button>
@@ -383,27 +386,78 @@
                             <p>Completed Tasks: <span id="completed-tasks">0</span></p>
                         </div>
                     </div>
-                    <!-- AI Chat Widget -->
-                    <!-- <div id="ai-widget" class="ai-widget">
-                        <button id="toggle-ai">🤖 Chat with JotBot</button>
-                        <div id="chat-container" class="chat-container hidden">
-                            <div id="chat-header">JotBot – Your Study Assistant</div>
-                            <div id="chat-messages" class="chat-messages">
-                                <p class="bot-message">👋 Hi! How can I help you today?</p>
-                            </div>
-                            <form id="chat-form" class="chat-form">
-                                <input type="text" id="chat-input" placeholder="Ask me anything..." required>
-                                <button type="submit">Send</button>
-                            </form>
-                        </div>
-                    </div> -->
-                </div>
-            
+                </div>           
                 <style>
                     #calendar-list li, #high-priority-list li, #todo-list li {
                         font-family: var(--font-primary) !important;
                     }
                 </style>
+            </section>
+            <!-- About Us Section -->
+            <section id="aboutus" class="section">
+                <h2>About Us</h2>
+                <div class="aboutus-container">
+                    <div class="aboutus-content">
+                        <h3>Welcome to Jottie</h3>
+                        <p>Jottie is a comprehensive student productivity platform designed to help students organize their academic life, manage tasks, and boost productivity. Easily jot down your events and tasks!</p>
+                        
+                        <div class="mission-section">
+                            <h3>Mission</h3>
+                            <p>Jottie is committed to empower students with intuitive tools that simplify the academic journey —an all-in-one solution that puts organization at your fingertips.</p>
+                        </div>
+                        
+                        <div class="features-section">
+                            <h3>Our Features</h3>
+                            <div class="feature-cards">
+                                <div class="feature-card">
+                                    <div class="feature-icon"><i class="fas fa-calendar"></i></div>
+                                    <h4>Calendar</h4>
+                                    <p>Never miss a deadline with the intuitive calendar system. Schedule assignments, exams, and study sessions with color-coded events.</p>
+                                </div>
+                                
+                                <div class="feature-card">
+                                    <div class="feature-icon"><i class="fas fa-tasks"></i></div>
+                                    <h4>To-Do List</h4>
+                                    <p>Break down complex projects into manageable tasks. The priority-based task management system helps you focus on what matters most.</p>
+                                </div>
+                                
+                                <div class="feature-card">
+                                    <div class="feature-icon"><i class="fas fa-book"></i></div>
+                                    <h4>School Binder</h4>
+                                    <p>Keep your notes organized by subject. The digital binder replicates the convenience of physical notes with the power of digital search and organization.</p>
+                                </div>
+                                
+                                <div class="feature-card">
+                                    <div class="feature-icon"><i class="fas fa-th-large"></i></div>
+                                    <h4>Dashboard</h4>
+                                    <p>Get a bird's-eye view of your academic progress and upcoming priorities with the customizable dashboard.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="team-section">
+                            <h3>Background</h3>
+                            <p>Jottie was created by a cpe student who understands firsthand the challenges of staying organized throughout academic life. Combining experience in education, design, and technology, I built Jottie as the tool I wished I had during my studies. Jottie is inspired by Notion and Folderly.</p>
+                            
+                            <div class="team-members">
+                                <div class="team-member">
+                                    <div class="member-avatar">
+                                        <img src="project/images/default-avatar.png" alt="Team Member">
+                                    </div>
+                                    <h4>Jessica A. Omero</h4>
+                                    <p>Developer</p>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="contact-section">
+                            <h3>Get in Touch</h3>
+                            <p>Have questions or suggestions?</p>
+                            <a href="mailto:omero.jessica@gmail.com" class="btn primary">Email Us</a>
+                        </div>
+                    </div>
+                </div>
             </section>
             
             </main>
