@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jottie - Spotify Authentication</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            max-width: 90%;
+            width: 400px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid #1DB954;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        p {
+            color: #666;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Connecting to Spotify</h1>
+        <div class="spinner"></div>
+        <p>Please wait while we authenticate your Spotify account...</p>
+    </div>
+    
+    <script>
+        // Simple function to handle the callback
+        function processCallback() {
+            const hash = window.location.hash.substring(1);
+            const params = new URLSearchParams(hash);
+            
+            if (params.has('access_token')) {
+                const token = params.get('access_token');
+                const expiresIn = params.get('expires_in'); // in seconds
+                const expiry = Date.now() + (parseInt(expiresIn) * 1000);
+                
+                localStorage.setItem('spotify_access_token', token);
+                localStorage.setItem('spotify_token_expiry', expiry);
+                
+                console.log('Spotify token saved successfully');
+                return true;
+            }
+            return false;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Process the authentication response
+            const success = processCallback();
+            
+            if (success) {
+                console.log('Authentication successful, redirecting...');
+            } else {
+                console.log('Authentication failed or no token found');
+            }
+            
+            // Redirecting back to the main app
+            setTimeout(() => {
+                window.location.href = 'http://127.0.0.1:5500/public/index.html';
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

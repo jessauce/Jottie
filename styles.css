@@ -2494,3 +2494,447 @@ body[data-theme="dark"] .user-email {
         max-width: 250px;
     }
 }
+
+/* Spotify Widget Styles - Add this to your styles.css file */
+
+#spotify-widget {
+    background-color: #121212;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    font-family: var(--font-ui);
+}
+
+#spotify-widget h2 {
+    color: #1DB954;
+    padding: 15px;
+    margin: 0;
+    border-bottom: 1px solid #333;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-ui);
+}
+
+#spotify-widget h2 i {
+    color: #1DB954;
+}
+
+#spotify-content {
+    padding: 15px;
+}
+
+#spotify-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+#spotify-login p {
+    margin-bottom: 15px;
+    color: #ccc;
+    font-family: var(--font-ui);
+
+}
+
+#spotify-login-button {
+    background-color: #1DB954;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: var(--font-ui);
+
+}
+
+#spotify-login-button:hover {
+    background-color: #1ed760;
+}
+
+#spotify-track-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    min-height: 60px;
+    font-family: var(--font-ui);
+}
+
+.album-artwork {
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.track-details {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-ui);
+
+}
+
+.track-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+}
+
+.artist-name {
+    font-size: 0.85rem;
+    color: #b3b3b3;
+}
+
+.placeholder-text {
+    color: #b3b3b3;
+    font-family: var(--font-ui);
+
+}
+
+#spotify-player-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+#spotify-player-controls button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#spotify-player-controls button:hover {
+    background-color: #535353;
+    transform: scale(1.05);
+}
+
+#spotify-play-button {
+    width: 48px !important;
+    height: 48px !important;
+    background-color: #1DB954 !important;
+}
+
+#spotify-play-button:hover {
+    background-color: #1ed760 !important;
+}
+
+#spotify-search {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 5px;
+    font-family: var(--font-ui);
+
+}
+
+#spotify-search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+}
+
+#spotify-search-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: #1DB954;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#spotify-search-results {
+    max-height: 250px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.search-results-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-results-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-family: var(--font-ui);
+
+}
+
+.search-results-list li:hover {
+    background-color: #333;
+}
+
+.search-results-list li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+#spotify-playlists h3 {
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #eee;
+}
+
+#spotify-playlist-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#spotify-playlist-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #282828;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 0.85rem;
+}
+
+#spotify-playlist-list li:hover {
+    background-color: #333;
+}
+
+#spotify-playlist-list li img {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+.loading, .no-results, .no-playlists, .error {
+    color: #b3b3b3;
+    font-style: italic;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.error-message {
+    text-align: center;
+    padding: 20px;
+    font-family: var(--font-ui);
+}
+
+.error-message p {
+    color: #ff5555;
+    margin-bottom: 15px;
+    font-family: var(--font-ui);
+}
+
+/* Dark theme adjustments */
+.dark-theme #spotify-widget {
+    background-color: #282828;
+}
+
+/* Scrollbar styling */
+#spotify-search-results::-webkit-scrollbar {
+    width: 8px;
+}
+
+#spotify-search-results::-webkit-scrollbar-track {
+    background: #121212; 
+}
+ 
+#spotify-search-results::-webkit-scrollbar-thumb {
+    background: #535353; 
+    border-radius: 10px;
+}
+
+#spotify-search-results::-webkit-scrollbar-thumb:hover {
+    background: #7a7a7a; 
+}
+
+/* Spotify Mini Player Styles */
+#spotify-mini-player {
+    background-color: #121212;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    font-family: var(--font-ui);
+    padding: 0;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+.mini-player-content {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+}
+
+.mini-player-artwork {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.mini-player-artwork img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.mini-player-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.mini-player-track-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-player-artist-name {
+    font-size: 0.85rem;
+    color: #b3b3b3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mini-player-controls {
+    display: flex;
+    align-items: center;
+}
+
+.mini-player-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background-color: #1DB954;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mini-player-button:hover {
+    background-color: #1ed760;
+    transform: scale(1.05);
+}
+
+/* When music is actively playing */
+#spotify-mini-player.active .mini-player-track-name {
+    color: #1DB954;
+}
+
+/* Transition animation when song changes */
+.mini-player-track-name, .mini-player-artist-name {
+    transition: all 0.3s ease;
+}
+
+/* Add these styles to your CSS file */
+
+#spotify-mini-widget {
+    background-color: #121212;
+    border-radius: 10px;
+    overflow: hidden;
+    color: white;
+    font-family: var(--font-ui);
+    max-height: 200px;
+}
+
+#spotify-mini-widget h2 {
+    color: #1DB954;
+    padding: 12px 15px;
+    margin: 0;
+    border-bottom: 1px solid #333;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-ui);
+}
+
+#spotify-mini-content {
+    padding: 12px 15px;
+}
+
+#spotify-mini-track-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 50px;
+    font-family: var(--font-ui);
+}
+
+#spotify-mini-widget .album-artwork {
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+#spotify-mini-widget .track-details {
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-ui);
+    overflow: hidden;
+}
+
+#spotify-mini-widget .track-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#spotify-mini-widget .artist-name {
+    font-size: 0.8rem;
+    color: #b3b3b3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#spotify-mini-widget .placeholder-text {
+    color: #b3b3b3;
+    font-family: var(--font-ui);
+}

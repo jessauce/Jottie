@@ -4,6 +4,10 @@ import { initBinder } from './binder.js';
 import { initProfile } from './profile.js';
 import { initDashboard } from './dashboard.js';
 import { initAboutUs } from './aboutus.js';
+import { handleSpotifyAuth } from './spotify.js';
+//import { initJotify } from './jotify.js';
+import { createSpotifyWidget } from './spotify.js';
+
 
 // Initialize the application
 function init() {
@@ -14,6 +18,8 @@ function init() {
     initProfile();
     initDashboard();
     initAboutUs();
+    handleSpotifyAuth();
+    //initJotify();
 }
 
 function setupNavigation() {
@@ -420,3 +426,10 @@ function setupHeaderRepositioning() {
 // Initialize header image functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', setupHeaderImageFunctionality);
 
+document.addEventListener('DOMContentLoaded', () => {
+    const jotifySection = document.getElementById('jotify');
+
+    if (jotifySection) {
+        createSpotifyWidget(document.getElementById('spotify-container'));
+    }
+});

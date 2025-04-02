@@ -1,25 +1,40 @@
-// dashboard.js
+import { createSpotifyWidget, handleSpotifyAuth, createSpotifyMiniPlayer } from './spotify.js';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if we have a callback from Spotify
+    if (handleSpotifyAuth()) {
+        // If we just got authorized, we're already redirecting to dashboard
+        return;
+    }
+
+    // Original dashboard code
     const dashboardSection = document.getElementById('dashboard');
+    const dashboardContainer = document.getElementById('dashboard-container');
     const widgetContainer = document.getElementById('widget-container');
     const addWidgetButton = document.getElementById('add-widget');
+
+    // Add Spotify mini player to the dashboard
+    createSpotifyMiniPlayer(dashboardContainer);
 
     // Load saved widgets from localStorage
     const savedWidgets = JSON.parse(localStorage.getItem('widgets')) || [];
     savedWidgets.forEach(widgetText => addWidget(widgetText));
 
     // Add new widget
-    addWidgetButton.addEventListener('click', () => {
-        const widgetName = prompt('Enter widget name:');
-        if (widgetName) {
-            addWidget(widgetName);
-            saveWidgets();
-        }
-    });
+    if (addWidgetButton) {
+        addWidgetButton.addEventListener('click', () => {
+            const widgetName = prompt('Enter widget name:');
+            if (widgetName) {
+                addWidget(widgetName);
+                saveWidgets();
+            }
+        });
+    }
 
     // Add draggable widget
     function addWidget(text) {
+        if (!widgetContainer) return;
+        
         const widget = document.createElement('div');
         widget.classList.add('widget');
         widget.textContent = text;
@@ -31,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Save widgets to localStorage
     function saveWidgets() {
-        const widgetList = Array.from(document.querySelectorAll('.widget')).map(w => w.textContent);
+        if (!widgetContainer) return;
+        
+        const widgetList = Array.from(widgetContainer.querySelectorAll('.widget:not(#spotify-mini-widget)')).map(w => w.textContent);
         localStorage.setItem('widgets', JSON.stringify(widgetList));
     }
 
@@ -47,16 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    widgetContainer.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        const draggingWidget = document.querySelector('.dragging');
-        const afterElement = getDragAfterElement(widgetContainer, e.clientY);
-        if (afterElement == null) {
-            widgetContainer.appendChild(draggingWidget);
-        } else {
-            widgetContainer.insertBefore(draggingWidget, afterElement);
-        }
-    });
+    if (widgetContainer) {
+        widgetContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            const draggingWidget = document.querySelector('.dragging');
+            const afterElement = getDragAfterElement(widgetContainer, e.clientY);
+            if (afterElement == null) {
+                widgetContainer.appendChild(draggingWidget);
+            } else {
+                widgetContainer.insertBefore(draggingWidget, afterElement);
+            }
+        });
+    }
 
     function getDragAfterElement(container, y) {
         const draggableElements = [...container.querySelectorAll('.widget:not(.dragging)')];
@@ -74,5 +93,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 export function initDashboard() {
-    console.log('Dashboard initialized');
+    console.log('Dashboard initialized with Spotify mini player');
 }
