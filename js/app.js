@@ -7,6 +7,7 @@ import { initAboutUs } from './aboutus.js';
 import { handleSpotifyAuth } from './spotify.js';
 //import { initJotify } from './jotify.js';
 import { createSpotifyWidget } from './spotify.js';
+import { initSettings } from './settings.js';
 
 
 // Initialize the application
@@ -20,6 +21,7 @@ function init() {
     initAboutUs();
     handleSpotifyAuth();
     //initJotify();
+    initSettings()
 }
 
 function setupNavigation() {
@@ -433,3 +435,4 @@ document.addEventListener('DOMContentLoaded', () => {
         createSpotifyWidget(document.getElementById('spotify-container'));
     }
 });
+
