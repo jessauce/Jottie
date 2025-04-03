@@ -2,7 +2,9 @@
 
 // Spotify API configuration - Replace with your actual Client ID
 const CLIENT_ID = '1794d3d794ec456eb1dfd78289716fe7';
-const REDIRECT_URI = 'http://127.0.0.1:5500/public/callback.html';
+const LOCAL_REDIRECT_URI = 'http://127.0.0.1:5500/public/callback.html';
+const DEPLOYED_REDIRECT_URI = 'https://jotties.web.app/callback.html'; // Replace with actual deployed URL
+
 const SCOPES = [
     'user-read-private',
     'user-read-email',
@@ -12,6 +14,10 @@ const SCOPES = [
     'streaming',
     'user-library-read'
 ];
+
+// Detect if the app is deployed or running locally
+const isDeployed = window.location.hostname !== '127.0.0.1' && window.location.hostname !== 'localhost';
+const REDIRECT_URI = isDeployed ? DEPLOYED_REDIRECT_URI : LOCAL_REDIRECT_URI;
 
 // Token storage keys
 const TOKEN_KEY = 'spotify_access_token';
@@ -45,8 +51,9 @@ function handleCallback() {
         localStorage.setItem(TOKEN_KEY, token);
         localStorage.setItem(TOKEN_EXPIRY_KEY, expiry);
         
-        // Redirect back to the dashboard
-        window.location.href = 'http://127.0.0.1:5500/public/index.html';
+        // Redirect back to the main page dynamically
+        const MAIN_PAGE = isDeployed ? 'https://your-deployed-url.com/public/index.html' : 'http://127.0.0.1:5500/public/index.html';
+        window.location.href = MAIN_PAGE;
         return true;
     }
     return false;
