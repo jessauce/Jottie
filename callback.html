@@ -60,19 +60,18 @@
     </div>
     
     <script>
-        // Simple function to handle the callback
         function processCallback() {
             const hash = window.location.hash.substring(1);
             const params = new URLSearchParams(hash);
-            
+
             if (params.has('access_token')) {
                 const token = params.get('access_token');
                 const expiresIn = params.get('expires_in'); // in seconds
                 const expiry = Date.now() + (parseInt(expiresIn) * 1000);
-                
+
                 localStorage.setItem('spotify_access_token', token);
                 localStorage.setItem('spotify_token_expiry', expiry);
-                
+
                 console.log('Spotify token saved successfully');
                 return true;
             }
@@ -80,7 +79,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            // Process the authentication response
             const success = processCallback();
             
             if (success) {
@@ -88,10 +86,14 @@
             } else {
                 console.log('Authentication failed or no token found');
             }
-            
+
+            // Detect whether the app is running locally or deployed
+            const isDeployed = window.location.hostname !== '127.0.0.1' && window.location.hostname !== 'localhost';
+            const MAIN_PAGE = isDeployed ? 'https://jotties.web.app/index.html' : 'http://127.0.0.1:5500/public/index.html';
+
             // Redirecting back to the main app
             setTimeout(() => {
-                window.location.href = 'http://127.0.0.1:5500/public/index.html';
+                window.location.href = MAIN_PAGE;
             }, 1500);
         });
     </script>
