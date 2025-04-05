@@ -2397,7 +2397,7 @@ body[data-theme="dark"] .user-email {
 
 .feature-icon {
     font-size: 2rem;
-    color: var(--color-primary);
+    color: var(--accent-color);
     margin-bottom: 15px;
 }
 
@@ -2884,11 +2884,12 @@ body[data-theme="dark"] .user-email {
     padding: 12px 15px;
     margin: 0;
     border-bottom: 1px solid #333;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
     gap: 10px;
     font-family: var(--font-ui);
+    margin-top: -12px;
 }
 
 #spotify-mini-content {

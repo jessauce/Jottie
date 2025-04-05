@@ -511,9 +511,10 @@ export function createSpotifyMiniPlayer(dashboardContainer) {
     const miniPlayerWidget = document.createElement('div');
     miniPlayerWidget.id = 'spotify-mini-widget';
     miniPlayerWidget.className = 'widget';
-    miniPlayerWidget.style.order = '999'; // Make it appear at the bottom    
+    miniPlayerWidget.style.order = '-1'; // Make it appear at the top 999 kung bottom 
+     
     miniPlayerWidget.innerHTML = `
-        <h2><i class="fab fa-spotify"></i> Now Playing</h2>
+        <h2><i class="fab fa-spotify"></i>Jotify</h2>
         <div id="spotify-mini-content">
             <div id="spotify-mini-track-info">
                 <div class="placeholder-text">Not playing</div>
