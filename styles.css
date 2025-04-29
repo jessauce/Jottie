@@ -2241,6 +2241,7 @@ body[data-theme="dark"] .user-email {
 
 .widget h2 {
     margin: 0 0 10px;
+    
 }
 
 .widget p {
@@ -3091,3 +3092,48 @@ input:checked + .slider:before {
     margin-left: 10px;
     color: var(--text-primary);
 }
+
+.id-card-preview {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.id-card {
+    width: 300px;
+    height: 180px;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    display: flex;
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 40px;
+}
+
+.id-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.id-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#id-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+#id-course {
+    font-size: 0.95rem;
+    color: #333;
+}
+

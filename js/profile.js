@@ -12,11 +12,11 @@ function loadProfileFromStorage() {
     if (profileData.name) document.getElementById('profile-name').value = profileData.name;
     if (profileData.username) document.getElementById('profile-username').value = profileData.username;
     if (profileData.email) document.getElementById('profile-email').value = profileData.email;
-    if (profileData.bio) document.getElementById('profile-bio').value = profileData.bio;
-    if (profileData.theme) {
-        document.getElementById(`theme-${profileData.theme}`).checked = true;
-        document.body.setAttribute('data-theme', profileData.theme);
-    }
+    // if (profileData.bio) document.getElementById('profile-bio').value = profileData.bio;
+    // if (profileData.theme) {
+    //     document.getElementById(`theme-${profileData.theme}`).checked = true;
+    //     document.body.setAttribute('data-theme', profileData.theme);
+    // }
     
     // Set profile image if exists
     if (profileData.profileImage) {
@@ -172,3 +172,82 @@ function showNotification(message) {
         }, 300);
     }, 3000);
 }
+
+// Sync name and course to ID card
+document.getElementById("profile-name").addEventListener("input", function () {
+    document.getElementById("id-name").textContent = this.value || "Your Name";
+});
+
+document.getElementById("profile-course").addEventListener("input", function () {
+    document.getElementById("id-course").textContent = this.value || "Your Course & Year";
+});
+
+// Sync profile image to ID card
+document.getElementById("profile-image-input").addEventListener("change", function (e) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        document.getElementById("id-image").src = event.target.result;
+    };
+    if (e.target.files[0]) {
+        reader.readAsDataURL(e.target.files[0]);
+    }
+});
+
+// Elements
+const nameInput = document.getElementById("profile-name");
+const courseInput = document.getElementById("profile-course");
+const profileImageInput = document.getElementById("profile-image-input");
+const profileImagePreview = document.getElementById("profile-image-preview");
+const idImage = document.getElementById("id-image");
+const idName = document.getElementById("id-name");
+const idCourse = document.getElementById("id-course");
+
+// Load saved data on page load
+window.addEventListener("DOMContentLoaded", () => {
+    const savedName = localStorage.getItem("profileName");
+    const savedCourse = localStorage.getItem("profileCourse");
+    const savedImage = localStorage.getItem("profileImage");
+
+    if (savedName) {
+        nameInput.value = savedName;
+        idName.textContent = savedName;
+    }
+
+    if (savedCourse) {
+        courseInput.value = savedCourse;
+        idCourse.textContent = savedCourse;
+    }
+
+    if (savedImage) {
+        profileImagePreview.src = savedImage;
+        idImage.src = savedImage;
+    }
+});
+
+// Save and sync name
+nameInput.addEventListener("input", function () {
+    const value = this.value;
+    localStorage.setItem("profileName", value);
+    idName.textContent = value || "Your Name";
+});
+
+// Save and sync course
+courseInput.addEventListener("input", function () {
+    const value = this.value;
+    localStorage.setItem("profileCourse", value);
+    idCourse.textContent = value || "Your Course & Year";
+});
+
+// Save and sync image
+profileImageInput.addEventListener("change", function (e) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const imageData = event.target.result;
+        profileImagePreview.src = imageData;
+        idImage.src = imageData;
+        localStorage.setItem("profileImage", imageData);
+    };
+    if (e.target.files[0]) {
+        reader.readAsDataURL(e.target.files[0]);
+    }
+});
